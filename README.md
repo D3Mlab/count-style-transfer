@@ -26,19 +26,13 @@ python seq2seq/train_seq2seq.py  --model_name model_name --contrastive_loss --al
 
 `python eval_seq2seq_model.py --model_name 'checkpoint_path' --save_path 'result_save_path' --dataset 'paradetox' --fold 'test' --name 'test_eval' 
 `
-you can use 'test' or 'val' for --fold'
+
+
+You can use 'test' or 'val' for --fold'
 
 In all commands you can use whether 'paradetox' or  'appdia' for --dataset_name argument
 
 
 ## Saved checkpoints
 
-### Paradetox
-LM loss
-UT loss
-COUNT loss
-
-### APPDIA
-LM loss
-UT loss
-COUNT loss
+You can use the trained models from [here](https://drive.google.com/drive/folders/1yI6tu2IKLxWBGjTHy6q8YAdShwTr2Nfo?usp=sharing).
