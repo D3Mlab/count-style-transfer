@@ -1,0 +1,94 @@
+.idea
+cola-bin
+datasets
+fairseq
+runs
+*.csv
+*.pt
+*.model
+*.txt
+# transformers
+style_paraphrase/saved_models
+*__pycache__*
+
+
+llama-chat/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+
+
+ACL files/*
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope
+.ropeproject
+
+# Django stuff:
+*.log
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+style-venv
+detox_exp
+.vscode
+runs/
+datasets/
+saved_models/
+outputs/formality_backup
+outputs/baselines/dlsm_formality
+outputs/baselines/unmt_formality
+outputs/baselines/transform_delete_generate_formality
+
+input.tsv
+requirements-old.txt
+
+
+*.model
+*.pt
+*.gz
+*.txt
+*.csv
+fairseq/roberta.large
+cola-bin
+.idea
