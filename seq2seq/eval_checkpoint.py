@@ -6,8 +6,8 @@
 import os.path
 import pandas as pd
 import numpy as np
-from paradetox.eval import evaluate,format_number
-from paradetox.utils import get_profanity_list, clean_curse
+from evaluation.eval import evaluate,format_number
+from evaluation.utils import get_profanity_list, clean_curse
 import torch
 from tqdm import tqdm
 from statics import defaults
