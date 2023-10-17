@@ -6,8 +6,7 @@ import numpy as np
 import torch.nn.functional as F
 import torch
 import tqdm
-# from transformers.generation.utils.beam_search import BeamScorer, BeamSearchScorer, ConstrainedBeamSearchScorer
-from seq2seq.logit_processor import ClassiferLogitsProcessor, RollOut
+
 from transformers import (
     AutoTokenizer,
     AutoModelForSeq2SeqLM,
@@ -17,7 +16,7 @@ from transformers import (
     BeamSearchScorer,
 )
 
-from seq2seq.multiobjective.scorer import Scorer, Classifier
+from seq2seq.scorer import Scorer, Classifier
 
 
 # from seq2seq.multiobjective.multi_decoder import MutliDecoderModel

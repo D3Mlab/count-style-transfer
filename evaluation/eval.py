@@ -1,12 +1,12 @@
-from paradetox.evaluation_detox.metric_tools.content_similarity import calc_bleu, calc_bleus, new_wieting_sim
-from paradetox.evaluation_detox.metric_tools.fluency import  new_do_cola_eval
-from paradetox.evaluation_detox.metric_tools.joint_metrics import *
+from evaluation.evaluation_detox.metric_tools.content_similarity import calc_bleu, calc_bleus, new_wieting_sim
+from evaluation.evaluation_detox.metric_tools.fluency import  new_do_cola_eval
+from evaluation.evaluation_detox.metric_tools.joint_metrics import *
 import os
 from os import listdir
 from os.path import isfile, join
 
 import pandas as pd
-from paradetox.evaluation_detox.metric_tools.style_transfer_accuracy import classify_preds
+from evaluation.evaluation_detox.metric_tools.style_transfer_accuracy import classify_preds
 import numpy as np
 from box import Box
 import json

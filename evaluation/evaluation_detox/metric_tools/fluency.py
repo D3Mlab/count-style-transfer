@@ -4,9 +4,7 @@ import math
 import torch
 import tqdm
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, RobertaTokenizer, RobertaForSequenceClassification
-from fairseq.models.roberta import RobertaModel
-from flair.embeddings import FlairEmbeddings
-from fairseq.data.data_utils import collate_tokens
+
 import torch.nn.functional as F
 
 
