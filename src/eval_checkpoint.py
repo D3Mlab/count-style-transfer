@@ -10,7 +10,7 @@ from evaluation.eval import evaluate,format_number
 from evaluation.utils import get_profanity_list, clean_curse
 import torch
 from tqdm import tqdm
-from statics import defaults
+
 import json
 import os
 

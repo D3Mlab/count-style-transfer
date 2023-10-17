@@ -1,12 +1,15 @@
 .idea
 cola-bin
-datasets
+# datasets
 fairseq
 runs
-*.csv
+# *.csv
 *.pt
 *.model
 *.txt
+
+count_env/*
+
 # transformers
 style_paraphrase/saved_models
 *__pycache__*
@@ -73,7 +76,7 @@ style-venv
 detox_exp
 .vscode
 runs/
-datasets/
+# datasets/
 saved_models/
 outputs/formality_backup
 outputs/baselines/dlsm_formality

@@ -8,17 +8,17 @@
 
 ### Train with LM loss
 
-`python seq2seq/train_seq2seq.py  --model_name model_name --save_folder 'save_folder' --dataset_name 'paradetox'
+`python src/train_seq2seq.py  --model_name model_name --save_folder 'save_folder' --dataset_name 'paradetox'
 `
 
 ### Train with UT loss
 `
-python seq2seq/train_seq2seq.py  --model_name some_name  --unlikelihood --alpha alpha_value  --save_folder 'save_folder'  --dataset_name 'appdia'
+python src/train_seq2seq.py  --model_name some_name  --unlikelihood --alpha alpha_value  --save_folder 'save_folder'  --dataset_name 'appdia'
 `
 ### Train with COUNT loss
 
 `
-python seq2seq/train_seq2seq.py  --model_name model_name --contrastive_loss --alpha alpha_value  --save_folder 'save_folder' --dataset_name 'paradetox'
+python src/train_seq2seq.py  --model_name model_name --contrastive_loss --alpha alpha_value  --save_folder 'save_folder' --dataset_name 'paradetox'
 `
 
 ## Evalutaing 
