@@ -91,7 +91,7 @@ requirements-old.txt
 *.pt
 *.gz
 *.txt
-*.csv
+# *.csv
 fairseq/roberta.large
 cola-bin
 .idea
