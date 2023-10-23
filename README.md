@@ -36,3 +36,16 @@ In all commands you can use whether 'paradetox' or  'appdia' for --dataset_name 
 ## Saved checkpoints
 
 You can use the trained models from [here](https://drive.google.com/drive/folders/1yI6tu2IKLxWBGjTHy6q8YAdShwTr2Nfo?usp=sharing).
+
+
+
+## Citation
+Cite this work using the Bibtex below:
+```
+@inproceedings{abdollah2023count,
+  title={COUNT: COntrastive UNlikelihood Text Style Transfer for Text Detoxification},
+  author={Abdollah Pour, Mohammad Mahdi and Farinneya, Parsa and Bharadwaj, Manasa and Verma, Nikhil and Pesaranghader, Ali and Sanner, Scott},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2023},
+  year={2023}
+}
+```
