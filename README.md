@@ -1,5 +1,10 @@
-# count-style-transfer
+# COUNT: COntrastive UNlikelihood Text Style Transfer for Text Detoxification 
 
+[Paper PDF](https://aclanthology.org/2023.findings-emnlp.579.pdf)
+
+## Abstract
+
+Offensive and toxic text on social media platforms can lead to polarization and divisiveness within online communities and hinders constructive dialogue. Text detoxification is a crucial task in natural language processing to ensure the generation of non-toxic and safe text. Text detoxification is a special case of the Text Style Transfer (TST) problem, where an input text is rephrased to an output text that preserves its content while modifying the style (in this case to a more neutral, non-toxic style). State-of-the-art methods for detoxification use supervised training of encoder-decoder models to produce gold-standard outputs with a standard likelihood-based objective. However, it can be hard for these models to deviate from their pretrained auto-encoder identity mapping. While previous methods have used unlikelihood-based losses to penalize input-to-output copying of toxic content, these methods also unfortunately penalize non-toxic content in the input that would be fine to preserve in the output. To address these issues, we introduce a novel contrastive unlikelihood objective (COUNT) that directly contrasts the gold standard rephrasing with the identity input-to-output mapping to effectively isolate and focus learning on non-toxic style transfer. We benchmark COUNT on two parallel datasets, ParaDetox and APPDIA, showing that it achieves significant improvements in jointly combined fluency, content preservation, and detoxification (i.e., the highest “J” score).
 
 
 
