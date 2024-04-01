@@ -29,7 +29,7 @@ python src/train_seq2seq.py  --model_name model_name --contrastive_loss --alpha 
 ## Evalutaing 
 
 
-`python eval_seq2seq_model.py --model_name 'checkpoint_path' --save_path 'result_save_path' --dataset 'paradetox' --fold 'test' --name 'test_eval' 
+`python eval_seq2seq_model.py --model_name 'checkpoint_path' --save_path 'result_save_path' --dataset 'paradetox' --fold 'test' --name 'test_eval'  --make_preds --evaluate 
 `
 
 
