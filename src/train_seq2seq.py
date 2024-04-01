@@ -17,7 +17,7 @@ from torch import nn
 import time
 from torch.utils.data import random_split
 from losses import *
-# from mapping import Mapping 
+
 from transformers import BartConfig
 
 from dataset import get_APPDIA_train_and_val_loaders, get_paradetox_train_and_val_loaders
@@ -76,18 +76,7 @@ else:
     assert False, 'Wrong dataset name!'
 
 
-# dataset = load_dataset("SkolkovoInstitute/paradetox", "en-US", split="train")
 
-# N = len(dataset)
-
-# train_size = int(0.8* N)
-# test_size = N - train_size
-
-# generator1 = torch.Generator().manual_seed(42)
-# train_dataset, val_dataset = torch.utils.data.random_split(dataset, [train_size, test_size],generator=generator1)
-
-# train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=8)
-# eval_dataloader = DataLoader(val_dataset, batch_size=8)
 
 
 

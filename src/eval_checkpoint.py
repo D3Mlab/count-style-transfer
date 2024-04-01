@@ -7,38 +7,25 @@ import os.path
 import pandas as pd
 import numpy as np
 from evaluation.eval import evaluate,format_number
-from evaluation.utils import get_profanity_list, clean_curse
+
 import torch
 from tqdm import tqdm
 
 import json
 import os
 
-def evaluate_results_list(res, test_dataframe, use_old_checkpoints=False,name='few_shot',pred_file_name='preds.txt',do_types=True):
+def evaluate_results_list(res, test_dataframe,name='exp_name',pred_file_name='preds.txt'):
 
     toxic_sentences = []
 	
     # test_cases = pd.read_csv(test_data_path,sep=sep)
     toxic_sentences = test_dataframe['en_toxic_comment'].values
     refs = test_dataframe['en_neutral_comment'].values
-    if do_types:
-        types = test_cases['Type 1'].values
-        # types = test_dataframe['Type second annotation'].values
-        
-    else:
-        types = None
-
-
-    # with open(os.path.join(save_path, pred_file_name), mode='r', encoding='utf-8') as f:
-    #     res = f.readlines()
-
-
-    # res = [str(r.replace('\n', ' ').replace('\r', ' '))for r in res]
     name_to_add = ''
 
     assert len(res) == len(toxic_sentences), "length of preds and inputs dont match"
     # per_sent_file_name=os.path.join(None, name_to_add + 'per_sent_'+name+'.csv')
-    df, df2 = evaluate(toxic_sentences, res, refs,types=types, name=name,
+    df, df2 = evaluate(toxic_sentences, res, refs,types=None, name=name,
                        save_path=None,
                        per_sent_file_name=None)
     
@@ -47,78 +34,67 @@ def evaluate_results_list(res, test_dataframe, use_old_checkpoints=False,name='f
 
 
 
-def evaluate_results(save_path, test_dataframe, use_old_checkpoints=False,name='few_shot',pred_file_name='preds.txt',do_types=True):
+def evaluate_results(save_path, test_dataframe,name='exp_name',pred_file_name='preds.txt'):
     print('Evaling',save_path)
     toxic_sentences = []
 	
     # test_cases = pd.read_csv(test_data_path,sep=sep)
     toxic_sentences = test_dataframe['en_toxic_comment'].values
     refs = test_dataframe['en_neutral_comment'].values
-    if do_types:
-        types = test_cases['Type 1'].values
-        # types = test_dataframe['Type second annotation'].values
-        
-    else:
-        types = None
 
-    # with open('datasets/paradetox/raw/test_toxic_parallel.txt', encoding='utf-8', mode='r') as f:
-    #     toxic_sentences = f.readlines()
-    # refs = []
-    # with open('datasets/paradetox/raw/test_toxic_parallel_refs.txt', encoding='utf-8', mode='r') as f:
-    #     refs = f.readlines()
-    # res = []
+
+
     with open(os.path.join(save_path, pred_file_name), mode='r', encoding='utf-8') as f:
         res = f.readlines()
 
 
     print("res", len(res), "input", len(toxic_sentences))
-    # for i, r in enumerate(res):
-    #     if len(r) < 4:
-            # print('sentence:', [r], 'replacing with source')
-            # res[i] = toxic_sentences[i]
-        # elif len(r) < 10:
-        #     print('sentence:', [r])
-    # ref_sentences = ref_sentences[:limit]
+
     res = [str(r.replace('\n', ' ').replace('\r', ' '))for r in res]
     name_to_add = ''
-    # if filter_profanity:
-    #     name_to_add += 'filtered_'
-    # print("res", len(res), "input", len(toxic_sentences))
-    # if filter_profanity:
-    #     profanity = get_profanity_list()
-    #     res, _ = clean_curse(res, profanity)
-    # print("res", len(res), "input", len(toxic_sentences))
+ 
     assert len(res) == len(toxic_sentences), "length of preds and inputs dont match"
     per_sent_file_name=os.path.join(save_path, name_to_add + 'per_sent_'+name+'.csv')
-    df, df2 = evaluate(toxic_sentences, res, refs,types=types, name=name,
+    df, df2 = evaluate(toxic_sentences, res, refs,types=None, name=name,
                        save_path=os.path.join(save_path, name_to_add + 'eval_'+name+'.csv'),
                        per_sent_file_name=per_sent_file_name)
     
     print(df[['model','STA','ref_SIM','SIM','FL','J']].to_string())
-    if do_types:
-        df2 = pd.read_csv(per_sent_file_name)
-        # 
+
+
+
+
+
+
+
+def detox_experiment(save_path,detoxifier,test_dataframe,name="exp_name", make_preds=False,evaluate=False):
+
     
-
-        df3 = df2.mean(axis=0).to_frame().T
-        # print(len(df3))
-
-        df3['type'] = [-1]
-        for T in [1,2,3,4,5]:
-            # print('Type:',T)
-            # print(len(df2.loc[df2['type']==T][['STA','ref_SIM','SIM','FL','J']]))
-            # print(df2.loc[df2['type']==T].mean(axis=0))
-            df3 = df3.append(df2[df2['type']==T].mean(axis=0).to_frame().T)
-        df3 = (df3 * 10000).apply(np.floor)/10000
-        print(df3[['STA','ref_SIM','SIM','FL','J','type']].to_string())
-        # print(len(df3))
-        per_type_name=os.path.join(save_path, name_to_add + 'per_type_'+name+'.csv')
-        df3.to_csv(per_type_name)
+    
+    if make_preds:
+        toxic_sentences = []
+        # test_cases = pd.read_csv(test_data_path,sep=sep)
+        toxic_sentences = test_dataframe['en_toxic_comment'].values
+        refs = test_dataframe['en_neutral_comment'].values
 
 
+        if not os.path.exists(save_path):
+            os.makedirs(save_path)
+        res = []
+        
 
 
+        for toxic_sen in tqdm(toxic_sentences):
 
+            pred = detoxifier.get_output(toxic_sen)
+            res.append(pred)
+        res = [r.replace('\n', ' ').replace('\r', '') for r in res]
+    
+        with open(os.path.join(save_path, 'preds.txt'), mode='w', encoding='utf-8') as f:
+            f.write("\n".join(res))
+
+    if evaluate:
+        evaluate_results(save_path, name=name,test_dataframe=test_dataframe)
 
 
 

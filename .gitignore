@@ -95,3 +95,7 @@ requirements-old.txt
 fairseq/roberta.large
 cola-bin
 .idea
+
+test.sh
+
+result_save_path/

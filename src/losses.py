@@ -107,3 +107,8 @@ def compute_contrastive_loss8(model,x,y):
     loss = loss/batch_size
     return loss
 
+
+
+def compute_langauge_modeling_loss(model,x,y):
+        outputs = model(input_ids=x['input_ids'], attention_mask=x['attention_mask'], labels=y['input_ids'])
+        return  outputs.loss
